@@ -1,0 +1,23 @@
+* with
+Macro equivalent to ~when-let*~ with default bindings to intercept conditional failure.
+
+** Examples
+#+BEGIN_SRC emacs-lisp
+  (with ((a <- 1)
+         (b <- 2))
+    (+ a b))
+
+  (with ((a <- nil
+            <? 4)
+         (b <- 2))
+    (+ a b))
+
+  ;; NOTE: Default branch only executed on failure.
+  (with ((a <- "a"
+            <? (print "A"))
+         (b <- "b"))
+    (concat a b))
+#+END_SRC
+
+** License
+This project is licensed under the GNU Affero General Public License version 3.
